@@ -1,0 +1,19 @@
+{
+  "name": "rabbit-flare",
+  "version": "1.0.0",
+  "description": "rabbit flare is a platform game similar to endless runner but where a rabbit continuously jumps onto oncoming platforms to go farther and earn more scores.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leon-Mbegera/rabbit-flare.git"
+  },
+  "author": "leon mbegera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leon-Mbegera/rabbit-flare/issues"
+  },
+  "homepage": "https://github.com/Leon-Mbegera/rabbit-flare#readme"
+}
