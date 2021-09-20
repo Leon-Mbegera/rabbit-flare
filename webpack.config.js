@@ -1,16 +1,12 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // installed via npm
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // installed via npm
-const webpack = require('webpack'); // to access built-in plugins
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
-        /**
-         * With zero configuration,
-         *   clean-webpack-plugin will remove files inside the directory below
-         */
         path: path.resolve(__dirname, 'dist'),
     },
     module: {
