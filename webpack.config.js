@@ -22,10 +22,7 @@ module.exports = {
             },
             {
               test: /\.(gif|png|jpe?g|svg|xml)$/i,
-              use: "file-loader",
-              options: {
-                  outputPath: "assets"
-              }
+              use: "file-loader"
             }
         ]
     },
