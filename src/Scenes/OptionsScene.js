@@ -6,7 +6,7 @@ export default class OptionsScene extends Phaser.Scene {
     super('Options');
   };
 
-  preloader() {
+  preload() {
 
   };
 
