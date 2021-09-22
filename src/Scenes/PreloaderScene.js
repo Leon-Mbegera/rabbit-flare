@@ -1,4 +1,10 @@
 import 'phaser';
+import blueButtonOne from '../assets/ui/blue_button02.png'
+import blueButtonTwo from '../assets/ui/blue_button03.png'
+import phaserLogoImg from '../assets/logo.png'
+import boxImg from '../assets/ui/grey_box.png'
+import checkedBoxImg from '../assets/ui/blue_boxCheckmark.png'
+// import bgMusicTheme from '../assets/TownTheme.mp3'
 
 export default class PreloaderScene extends Phaser.Scene {
 
@@ -8,7 +14,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   preload() {
     // add the zenva logo
-    this.add.image(400, 200, 'logo');
+    this.add.image(400, 200, 'zenva');
 
     // display the progress bar
     var progressBar = this.add.graphics();
@@ -21,7 +27,7 @@ export default class PreloaderScene extends Phaser.Scene {
     var loadingText = this.make.text({
       x: width / 2,
       y: height / 2 - 50,
-      text: 'Loading.....',
+      text: 'Loading...',
       style: {
         font: '20px monospace',
         fill: '#ffffff'
@@ -75,12 +81,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
     // load assets needed in our game
-    this.load.image('blueButton1', 'assets/ui/blue_button02.png');
-    this.load.image('blueButton2', 'assets/ui/blue_button03.png');
-    this.load.image('phaserLogo', 'assets/logo.png');
-    this.load.image('box', 'assets/ui/grey_box.png');
-    this.load.image('checkedBox', 'assets/ui/blue_boxCheckmark.png');
-    this.load.audio('bgMusic', ['assets/TownTheme.mp3']);
+    this.load.image('blueButton1', blueButtonOne);
+    this.load.image('blueButton2', blueButtonTwo);
+    this.load.image('phaserLogo', phaserLogoImg);
+    this.load.image('box', boxImg);
+    this.load.image('checkedBox', checkedBoxImg);
+    this.load.audio('bgMusic', 'assets/TownTheme.mp3');
   };
   
   create() { 
@@ -93,7 +99,7 @@ export default class PreloaderScene extends Phaser.Scene {
   ready () {
     this.scene.start('Title');
     this.readyCount++;
-    if(this.readyCount === 2) {
+    if (this.readyCount === 2) {
       this.scene.start('Title');
     }
   }; 
