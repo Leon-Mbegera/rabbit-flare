@@ -9,6 +9,8 @@ export default class GameScene extends Phaser.Scene {
     super('Game');
   };
 
+  player;
+
   preload() {
     this.load.image('bg', background);
     this.load.image('platform', platform)
@@ -29,9 +31,15 @@ export default class GameScene extends Phaser.Scene {
       body.updateFromGameObject()
     }
 
-    this.physics.add.sprite(240, 320, 'bunny_stand').setScale(0.4)
-
-
+    this.player = this.physics.add.sprite(240, 320, 'bunny_stand').setScale(0.4)
+    this.physics.add.collider(platforms, this.player)
   };
+
+  update() {
+    const touchingDown = this.player.body.touching.down
+    if (touchingDown) {
+      this.player.setVelocityY(-330);
+    }
+  }
 
 };
