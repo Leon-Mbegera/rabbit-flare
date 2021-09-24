@@ -11,11 +11,14 @@ export default class GameScene extends Phaser.Scene {
 
   player;
   platforms;
+  cursors;
 
   preload() {
     this.load.image('bg', background);
     this.load.image('platform', platform)
     this.load.image('bunny_stand', bunny_stand)
+
+    this.cursors = this.input.keyboard.createCursorKeys()
   };
 
   create() {
@@ -41,7 +44,11 @@ export default class GameScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player)
   };
 
-  update() {
+  update(t, dt) {
+    const touchingDown = this.player.body.touching.down
+    if (touchingDown) {
+      this.player.setVelocityY(-330);
+    }
 
     this.platforms.children.iterate(child => {
       const platform = child;
@@ -50,11 +57,16 @@ export default class GameScene extends Phaser.Scene {
         platform.y = scrollY - Phaser.Math.Between(50, 80)
         platform.body.updateFromGameObject()
       }
-      const touchingDown = this.player.body.touching.down
-      if (touchingDown) {
-        this.player.setVelocityY(-330);
-      }
     });
+
+    if (this.cursors.left.isDown && !touchingDown) {
+      this.player.setVelocityX(-200);
+    } else if (this.cursors.right.isDown && !touchingDown) {
+      this.player.setVelocityX(200);
+    } else {
+      this.player.setVelocityX(0)
+    }
+    
 
   }
 
