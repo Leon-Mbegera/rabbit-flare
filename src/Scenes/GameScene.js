@@ -10,6 +10,7 @@ export default class GameScene extends Phaser.Scene {
   };
 
   player;
+  platforms;
 
   preload() {
     this.load.image('bg', background);
@@ -18,13 +19,13 @@ export default class GameScene extends Phaser.Scene {
   };
 
   create() {
-    this.add.image(400, 300, 'bg');
+    this.add.image(240, 320, 'bg').setScrollFactor(1, 0)
 
-    const platforms = this.physics.add.staticGroup();
+    this.platforms = this.physics.add.staticGroup();
     for (let i = 0; i < 6; ++i) {
       const x = Phaser.Math.Between(80, 400);
       const y = 200 * i
-      const platform = platforms.create(x, y, 'platform')
+      const platform = this.platforms.create(x, y, 'platform')
       platform.setScale(0.5)
 
       const body = platform.body
@@ -32,7 +33,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     this.player = this.physics.add.sprite(240, 320, 'bunny_stand').setScale(0.4)
-    this.physics.add.collider(platforms, this.player)
+    this.physics.add.collider(this.platforms, this.player)
     this.player.body.checkCollision.up = false
     this.player.body.checkCollision.left = false
     this.player.body.checkCollision.right = false
@@ -41,10 +42,20 @@ export default class GameScene extends Phaser.Scene {
   };
 
   update() {
-    const touchingDown = this.player.body.touching.down
-    if (touchingDown) {
-      this.player.setVelocityY(-330);
-    }
+
+    this.platforms.children.iterate(child => {
+      const platform = child;
+      const scrollY = this.cameras.main.scrollY
+      if (platform.y >= scrollY + 1100) {
+        platform.y = scrollY - Phaser.Math.Between(50, 80)
+        platform.body.updateFromGameObject()
+      }
+      const touchingDown = this.player.body.touching.down
+      if (touchingDown) {
+        this.player.setVelocityY(-330);
+      }
+    });
+
   }
 
 };
