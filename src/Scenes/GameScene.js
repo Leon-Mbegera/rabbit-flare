@@ -15,6 +15,7 @@ export default class GameScene extends Phaser.Scene {
   platforms;
   cursors;
   carrots;
+  carrotsCollected = 0;
 
   preload() {
     this.load.image('bg', background);
@@ -61,6 +62,11 @@ export default class GameScene extends Phaser.Scene {
       undefined,
       this
     );
+
+    const style = { color: '#000', fontSize: '24px' }
+    this.add.text(240, 10, 'Score: 0', style)
+        .setScrollFactor(0)
+        .setOrigin(0.5, 0)
   };
 
   update(t, dt) {
@@ -114,5 +120,6 @@ export default class GameScene extends Phaser.Scene {
   handleCollectCarrot(player, carrot) {
     this.carrots.killAndHide(carrot)
     this.physics.world.disableBody(carrot.body)
+    this.carrotsCollected++;
   }
 };
