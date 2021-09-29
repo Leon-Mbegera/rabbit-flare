@@ -3,6 +3,7 @@ import Carrot from '../game/Carrot';
 import background from '../assets/bg_layer1.png'
 import platform from '../assets/ground_grass.png'
 import bunny_stand from '../assets/bunny1_stand.png'
+import bunny_jump from '../assets/bunny1_jump.png'
 import carrotImg from '../assets/carrot.png'
 
 export default class GameScene extends Phaser.Scene {
@@ -26,6 +27,7 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('bg', background);
     this.load.image('platform', platform)
     this.load.image('bunny_stand', bunny_stand)
+    this.load.image('bunny_jump', bunny_jump)
     this.load.image('carrot', carrotImg)
 
     this.cursors = this.input.keyboard.createCursorKeys()
@@ -78,6 +80,12 @@ export default class GameScene extends Phaser.Scene {
     const touchingDown = this.player.body.touching.down
     if (touchingDown) {
       this.player.setVelocityY(-330);
+      this.player.setTexture('bunny_jump')
+    }
+
+    const vy = this.player.body.velocity.y
+    if (vy > 0 && this.player.texture.key !== 'bunny_stand') {
+      this.player.setTexture('bunny_stand')
     }
 
     this.platforms.children.iterate(child => {
