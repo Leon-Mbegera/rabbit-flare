@@ -18,6 +18,10 @@ export default class GameScene extends Phaser.Scene {
   carrotsCollected = 0;
   carrotsCollectedText
 
+  init() {
+    this.carrotsCollected = 0
+  }
+
   preload() {
     this.load.image('bg', background);
     this.load.image('platform', platform)
