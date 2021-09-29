@@ -17,8 +17,9 @@ export default class GameScene extends Phaser.Scene {
   platforms;
   cursors;
   carrots;
-  carrotsCollected = 0;
+  carrotsCollected = 0
   carrotsCollectedText
+  jumpCount = 0
 
   init() {
     this.carrotsCollected = 0
@@ -105,8 +106,20 @@ export default class GameScene extends Phaser.Scene {
       this.player.setVelocityX(-200);
     } else if (this.cursors.right.isDown && !touchingDown) {
       this.player.setVelocityX(200);
-    } else {
+    } else (
       this.player.setVelocityX(0)
+    )
+
+    const isJustDown = Phaser.Input.Keyboard.JustDown(this.cursors.up)
+    const touchingGround = this.player.body.touching.down
+
+    if (isJustDown && !touchingGround && this.jumpCount < 1){
+      this.player.setVelocityY(-330)
+      ++this.jumpCount
+    } 
+
+    if (touchingDown) {
+      this.jumpCount = 0
     }
 
     this.horizontalWrap(this.player)
