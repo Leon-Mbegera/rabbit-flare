@@ -98,9 +98,8 @@ export default class GameScene extends Phaser.Scene {
 
     const bottomPlatform = this.findBottomMostPlatform();
     if (this.player.y > bottomPlatform.y + 200) {
-      console.log('Game Over')
+      this.scene.start('game-over')
     }
-
   }
 
   horizontalWrap(sprite) {
@@ -143,8 +142,8 @@ export default class GameScene extends Phaser.Scene {
 
       if (platform.y < bottomPlatform.y) {
         continue
-        bottomPlatform = platform
       }
+      bottomPlatform = platform
     }
     return bottomPlatform;
   }

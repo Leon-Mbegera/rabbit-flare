@@ -1,4 +1,6 @@
 import 'phaser';
+// import Game from '../index'
+// import GameOver from '../Scenes/GameOver';
 
 export default {
   type: Phaser.AUTO,
@@ -12,5 +14,6 @@ export default {
       debug: true
     }
   }
+  // scene: [Game, GameOver]
 };
 
