@@ -1,5 +1,24 @@
 import 'phaser'
 
+const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/scores/'
+
+const scores;
+const fetchPlayers = async () => {
+  const response =  await fetch(endpoint)
+  const data = await response.json()
+  return data
+};
+
+const fetchScore = async () => {
+  fetchPlayers().then(data => {
+    scores = data.results
+  }).catch( err => {
+    throw ('data not found!')
+  });
+}
+
+fetchScore();
+
 export default class GameOver extends Phaser.Scene {
 
   constructor() {
@@ -17,12 +36,5 @@ export default class GameOver extends Phaser.Scene {
       this.scene.start('Game')
     })
   }
-
-  preload() {
-
-  }
-
-  update() {
-
-  }
 }
+
