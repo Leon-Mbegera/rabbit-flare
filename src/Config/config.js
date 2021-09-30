@@ -18,7 +18,3 @@ export default {
 };
 
 
-{
-  "result": "Game with ID: tTdXRaCitjP9a847cWV2 added."
-}
-

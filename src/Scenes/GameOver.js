@@ -1,8 +1,8 @@
 import 'phaser'
 
-const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/scores/'
+const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/tTdXRaCitjP9a847cWV2/scores/'
 
-const scores;
+scores;
 const fetchPlayers = async () => {
   const response =  await fetch(endpoint)
   const data = await response.json()
@@ -11,9 +11,9 @@ const fetchPlayers = async () => {
 
 const fetchScore = async () => {
   fetchPlayers().then(data => {
-    scores = data.results
+    scores = data.result
   }).catch( err => {
-    throw ('data not found!')
+    throw ('data not found!', err)
   });
 }
 
@@ -30,6 +30,7 @@ export default class GameOver extends Phaser.Scene {
     const height = this.scale.height
 
     this.add.text(width * 0.5, height * 0.5, 'Game Over', { fontSize: '48px'}).setOrigin(0.5)
+    
     this.add.text(400, 400, 'Press the space-bar to play again!', { fontSize: '32px', fill: '#fff'})
 
     this.input.keyboard.once('keydown-SPACE', () => {
