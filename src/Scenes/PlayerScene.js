@@ -4,7 +4,7 @@ import config from '../Config/config'
 export default class Player extends Phaser.Scene {
 
   constructor() {
-    super('player')
+    super('Player')
   }
 
   create() {

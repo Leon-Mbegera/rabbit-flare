@@ -10,6 +10,15 @@ export default {
     arcade: {
       gravity: { y: 200 },
     }
-  }
+  },
+  dom: {
+    createContainer: true
+  },
+  player: ''
 };
+
+
+{
+  "result": "Game with ID: tTdXRaCitjP9a847cWV2 added."
+}
 
