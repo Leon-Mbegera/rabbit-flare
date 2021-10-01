@@ -4,7 +4,7 @@
   "description": "rabbit flare is a platform game similar to endless runner but where a rabbit continuously jumps onto oncoming platforms to go farther and earn more scores.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "watch": "webpack --watch",
@@ -28,6 +28,7 @@
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.2.4",
     "raw-loader": "^4.0.2",
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^5.53.0",

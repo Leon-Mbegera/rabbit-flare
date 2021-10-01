@@ -1,0 +1,8 @@
+#inputForm {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#nameInput, 
+#btn {
+  width: 40px;
+}

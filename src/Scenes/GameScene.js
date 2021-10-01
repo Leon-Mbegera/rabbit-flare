@@ -20,6 +20,7 @@ export default class GameScene extends Phaser.Scene {
   carrotsCollected = 0
   carrotsCollectedText
   jumpCount = 0
+  value
 
   init() {
     this.carrotsCollected = 0
@@ -156,7 +157,7 @@ export default class GameScene extends Phaser.Scene {
     this.carrotsCollected += 1;
 
     this.value = `Score: ${this.carrotsCollected}`
-    this.carrotsCollectedText.text = value
+    this.carrotsCollectedText.text = this.value
   }
 
   findBottomMostPlatform() {

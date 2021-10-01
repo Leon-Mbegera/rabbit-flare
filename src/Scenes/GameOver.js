@@ -1,50 +1,87 @@
 import 'phaser'
+import background from '../assets/bg_layer1.png'
 import config from '../Config/config';
+import axios from 'axios';
 import Button from '../Objects/Button';
 import "regenerator-runtime/runtime"
 
-const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/tTdXRaCitjP9a847cWV2/scores/'
 
-let scores;
-const fetchPlayers = async () => {
-  const response =  await fetch(endpoint)
-  const data = await response.json()
-  return data
-};
 
-const fetchScore = async () => {
-  fetchPlayers().then(data => {
-    scores = data.result
-  }).catch( err => {
-    throw ('data not found!', err)
-  });
-}
+  const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/tTdXRaCitjP9a847cWV2/scores/'
 
-fetchScore();
 
-export default class GameOver extends Phaser.Scene {
+  export default class GameOver extends Phaser.Scene {
 
-  constructor() {
-    super('game-over')
-  }
+    constructor() {
+      super('game-over')
+    }
 
-  init(value) {
-    this.value = value
-  }
+    init(value) {
+      this.value = value
+    }
 
-  create() {
-    const width = this.scale.width
-    const height = this.scale.height
+    sendScore = async () => {
+      const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/tTdXRaCitjP9a847cWV2/scores/'
+  
+      const { data } = await axios.post(endpoint, {
+        user: config.player,
+        score: this.value
+      });
+    }
 
-    this.add.text(width * 0.5, height * 0.5, 'Game Over', { fontSize: '48px'}).setOrigin(0.5)
-    this.add.text(400, 320, `${this.value}`)
-    this.add.text(400, 400, 'Press the space-bar to play again!', { fontSize: '32px', fill: '#fff'})
+    fetchScore = async () => {
+      try { 
+        const { data } = await axios.get(endpoint)
+        this.scores = data.result
+        return this.scores
+      } catch(err) {
+        this.scores = []
+        console.error(err)
+        return this.scores
+      }
+    };
 
-    this.input.keyboard.once('keydown-SPACE', () => {
-      this.scene.start('Game', )
-    });
+    getLeaderboard = async () => {
+      await this.sendScore()
+      const results = await this.fetchScore() 
+      const sorted = results.sort((a, b) => a.score - b.score) 
 
-    this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'blueButton1', 'blueButton2', 'Leaderboard', 'Leaderboard');
-  }
-}
+      let x1 = 600
+      let x2 = 700;
+      let x3 = 1000;
+      let y = 100;
+      let i = 1;
+      sorted.forEach(player => {
+        while(i < 11) {
+          this.add.text(x1, y, i, { fontSize: '24px' }).setOrigin(0)
+          this.add.text(x2, y, player.user, { fontSize: '24px' }).setOrigin(0)
+          this.add.text(x3, y, player.score, { fontSize: '24px' }).setOrigin(0)
+          i += 1
+          break;
+        }
+        y += 50;
+      })
+    }
 
+    preload() {
+      this.load.image('bg', background)
+    }
+
+    create() {
+
+      this.add.image(320, 240, 'bg')
+      this.getLeaderboard()
+
+      this.add.text(200, 100, 'Game Over', { fontSize: '48px bolder', fill: '#000' }).setOrigin(0.5)
+      this.add.text(100, 150, `Your ${this.value}`, { fontSize: '32px bold', fill: '#000' })
+
+      this.gameButton = new Button(this, 200, 300, 'blueButton1', 'blueButton2', 'Restart', 'Game');
+
+      // this.add.text(600, 100, `${config.player}`, { fontSize: '24px' }).setOrigin(0.5)
+      // this.add.text(1000, 100, `${this.value}`, { fontSize: '24px' }).setOrigin(0.5)
+    }
+
+  };
+
+
+  
