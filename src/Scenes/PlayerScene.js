@@ -1,21 +1,36 @@
 import 'phaser'
 import config from '../Config/config'
+import inputForm from "../assets/nameInput.html"
+import phaserLogoImg from '../assets/logo.png'
 
-export default class Player extends Phaser.Scene {
 
+export default class PlayerScene extends Phaser.Scene {
+  
   constructor() {
     super('Player')
   }
 
-  create() {
-    const btn = document.getElementById('btn')
-    btn.addEventListener('click', () => {
-      e.prevent();
-      const name = document.getElementById('name-input').value 
-      if (name !== '') {
-        config.player = name
-        this.scene.start('Game')
-      }
-    });
+  inputForm = `<form id='inputForm d-flex' >
+  <input type='text' style="position: absolute; background-color: yellow" id='nameInput'    placeholder="give your name">
+  <input type='submit' name='loginButton'id='btn' value='start game'>
+  </form>`;
+
+  preload(){
+    this.load.html('form', inputForm)
   }
+  
+  create() {
+    const domElement = this.add.dom(400, 100).createFromCache(this.inputForm)
+     domElement.addListener('click')
+    
+      domElement.on('click', (e) => {
+        e.preventDefault()
+        const nameInput = document.getElementById('nameInput')
+        if (nameInput.value !== '') {
+          config.player = nameInput.value
+          this.scene.start('Game')
+        }
+      });
+  }
+  
 }

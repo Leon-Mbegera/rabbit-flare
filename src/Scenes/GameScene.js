@@ -62,7 +62,6 @@ export default class GameScene extends Phaser.Scene {
     this.carrots = this.physics.add.group({
       classType: Carrot
     })
-    // this.carrots.get(240, 320, 'carrot')
     this.physics.add.collider(this.platforms, this.carrots)
 
     this.physics.add.overlap(
@@ -115,7 +114,7 @@ export default class GameScene extends Phaser.Scene {
 
     if (isJustDown && !touchingGround && this.jumpCount < 1){
       this.player.setVelocityY(-330)
-      ++this.jumpCount
+      this.jumpCount += 1
     } 
 
     if (touchingDown) {

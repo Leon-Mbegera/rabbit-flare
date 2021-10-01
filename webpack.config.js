@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
+
 module.exports = {
     mode: 'development',
     entry: './src/index.js',
@@ -21,8 +22,12 @@ module.exports = {
               use: "raw-loader"
             },
             {
-              test: /\.(ogg|mp3|wav|gif|png|jpe?g|svg|xml)$/i,
+              test: /\.(ogg|mp3|wav|gif|png|jpe?g|svg|xml|html)$/i,
               use: "file-loader"
+            },
+            {
+                test: /\.html$/i,
+                loader: "html-loader",
             }
         ]
     },

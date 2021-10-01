@@ -1,10 +1,11 @@
 import 'phaser'
 import config from '../Config/config';
 import Button from '../Objects/Button';
+import "regenerator-runtime/runtime"
 
 const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/tTdXRaCitjP9a847cWV2/scores/'
 
-scores;
+let scores;
 const fetchPlayers = async () => {
   const response =  await fetch(endpoint)
   const data = await response.json()

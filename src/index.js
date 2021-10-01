@@ -9,6 +9,7 @@ import PlayerScene from './Scenes/PlayerScene'
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import GameOver from './Scenes/GameOver';
+import Leaderboard from './Scenes/Leaderboard';
 
 export default class Game extends Phaser.Game {
     
@@ -24,6 +25,7 @@ export default class Game extends Phaser.Game {
         this.scene.add('Credits', CreditsScene);
         this.scene.add('Game', GameScene);
         this.scene.add('game-over', GameOver)
+        this.scene.add('Leaderboard', Leaderboard)
         this.scene.start('Boot');
     };
 };

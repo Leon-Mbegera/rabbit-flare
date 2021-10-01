@@ -1,6 +1,7 @@
 import 'phaser'
 import config from '../Config/config';
 import Button from '../Objects/Button';
+import "regenerator-runtime/runtime"
 
 
 export default class Leaderboard extends Phaser.Scene {

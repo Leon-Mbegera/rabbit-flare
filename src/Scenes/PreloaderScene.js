@@ -88,7 +88,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', boxImg);
     this.load.image('checkedBox', checkedBoxImg);
     this.load.audio('bgMusic', bgMusicTheme);
-    this.load.html('inputForm', inputForm)
+    this.load.html('form', inputForm)
   };
  
   init (){
@@ -97,7 +97,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
   ready () {
     this.scene.start('Title');
-    this.readyCount++;
+    this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }
