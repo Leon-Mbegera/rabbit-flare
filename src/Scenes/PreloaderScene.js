@@ -4,7 +4,7 @@ import blueButtonTwo from '../assets/ui/blue_button03.png'
 import phaserLogoImg from '../assets/logo.png'
 import boxImg from '../assets/ui/grey_box.png'
 import checkedBoxImg from '../assets/ui/blue_boxCheckmark.png'
-import bgMusicTheme from '../assets/TownTheme.mp3'
+// import bgMusicTheme from '../assets/TownTheme.mp3'
 import inputForm from '../assets/nameInput.html'
 
 export default class PreloaderScene extends Phaser.Scene {
@@ -87,7 +87,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('phaserLogo', phaserLogoImg);
     this.load.image('box', boxImg);
     this.load.image('checkedBox', checkedBoxImg);
-    this.load.audio('bgMusic', bgMusicTheme);
+    // this.load.audio('bgMusic', bgMusicTheme);
     this.load.html('form', inputForm)
   };
  

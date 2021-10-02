@@ -80,6 +80,9 @@ export default class GameScene extends Phaser.Scene {
   };
 
   update(t, dt) {
+
+    this.carrotsCollectedText.setText(`Score: ${this.carrotsCollected}`)
+
     const touchingDown = this.player.body.touching.down
     if (touchingDown) {
       this.player.setVelocityY(-330);
@@ -126,7 +129,7 @@ export default class GameScene extends Phaser.Scene {
 
     const bottomPlatform = this.findBottomMostPlatform();
     if (this.player.y > bottomPlatform.y + 200) {
-      this.scene.start('game-over', this.value)
+      this.scene.start('game-over', { score: this.carrotsCollected })
     }
   }
 
@@ -154,9 +157,7 @@ export default class GameScene extends Phaser.Scene {
   handleCollectCarrot(player, carrot) {
     this.carrots.killAndHide(carrot)
     this.physics.world.disableBody(carrot.body)
-    this.carrotsCollected += 1;
-    this.value = `Score: ${this.carrotsCollected}`
-    this.carrotsCollectedText.text = this.value
+    this.carrotsCollected += 5;
   }
 
   findBottomMostPlatform() {
