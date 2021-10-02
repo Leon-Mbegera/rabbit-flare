@@ -155,7 +155,6 @@ export default class GameScene extends Phaser.Scene {
     this.carrots.killAndHide(carrot)
     this.physics.world.disableBody(carrot.body)
     this.carrotsCollected += 1;
-
     this.value = `Score: ${this.carrotsCollected}`
     this.carrotsCollectedText.text = this.value
   }

@@ -44,7 +44,7 @@ import "regenerator-runtime/runtime"
     getLeaderboard = async () => {
       await this.sendScore()
       const results = await this.fetchScore() 
-      const sorted = results.sort((a, b) => a.score - b.score) 
+      const sorted = results.sort((a, b) => a.score > b.score ? -1 : 1) 
 
       let x1 = 600
       let x2 = 700;
@@ -53,9 +53,9 @@ import "regenerator-runtime/runtime"
       let i = 1;
       sorted.forEach(player => {
         while(i < 11) {
-          this.add.text(x1, y, i, { fontSize: '24px' }).setOrigin(0)
-          this.add.text(x2, y, player.user, { fontSize: '24px' }).setOrigin(0)
-          this.add.text(x3, y, player.score, { fontSize: '24px' }).setOrigin(0)
+          this.add.text(x1, y, i, { fontSize: '24px bold', color: 'black' }).setOrigin(0)
+          this.add.text(x2, y, player.user, { fontSize: '24px bold', color: 'black' }).setOrigin(0)
+          this.add.text(x3, y, player.score, { fontSize: '24px bold', color: 'black' }).setOrigin(0)
           i += 1
           break;
         }
