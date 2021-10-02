@@ -5,8 +5,6 @@ import axios from 'axios';
 import Button from '../Objects/Button';
 import "regenerator-runtime/runtime"
 
-
-
   const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WGd2oSGJfDJEiyfEBDhX/scores/'
 
 
@@ -33,7 +31,6 @@ import "regenerator-runtime/runtime"
       try { 
         const { data } = await axios.get(endpoint)
         this.scores = data.result
-        console.log(this.scores)
         return this.scores
       } catch(err) {
         this.scores = []
@@ -59,7 +56,6 @@ import "regenerator-runtime/runtime"
           this.add.text(x1, y, i, { fontSize: '24px bold', color: 'black' }).setOrigin(0)
           this.add.text(x2, y, player.user, { fontSize: '24px bold', color: 'black' }).setOrigin(0)
           this.add.text(x3, y, player.score, { fontSize: '24px bold', color: 'black' }).setOrigin(0)
-          console.log(player.score)
           i += 1
           break;
         }
@@ -78,11 +74,7 @@ import "regenerator-runtime/runtime"
 
       this.add.text(200, 100, 'Game Over', { fontSize: '48px bolder', fill: '#000' }).setOrigin(0.5)
       this.add.text(100, 150, `Your score: ${this.value}`, { fontSize: '32px bold', fill: '#000' })
-
       this.gameButton = new Button(this, 200, 300, 'blueButton1', 'blueButton2', 'Restart', 'Game');
-
-      // this.add.text(600, 100, `${config.player}`, { fontSize: '24px' }).setOrigin(0.5)
-      // this.add.text(1000, 100, `${this.value}`, { fontSize: '24px' }).setOrigin(0.5)
     }
 
   };

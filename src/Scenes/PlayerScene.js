@@ -1,5 +1,6 @@
 import 'phaser'
 import config from '../Config/config'
+import background from '../assets/bg_layer1.png'
 
 export default class PlayerScene extends Phaser.Scene {
   
@@ -7,9 +8,15 @@ export default class PlayerScene extends Phaser.Scene {
     super('Player')
   }
 
+  preload() {
+    this.load.image('bg', background)
+  }
+
  
   create() {
-    const domElement = this.add.dom(400, 100).createFromCache('form')
+    this.add.image(320, 240, 'bg')
+
+    const domElement = this.add.dom(600, 100).createFromCache('form')
      domElement.addListener('click')
     
       domElement.on('click', (e) => {
