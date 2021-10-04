@@ -12,9 +12,18 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.m?js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                use: {
+                  loader: "babel-loader",
+                  options: {
+                    presets: ['@babel/preset-env']
+                  }
+                }
             },
             {
               test: [/\.vert$/, /\.frag$/],
