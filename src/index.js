@@ -1,4 +1,5 @@
 import 'phaser';
+import 'jest-canvas-mock'
 import Model from './Model';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
@@ -9,6 +10,7 @@ import PlayerScene from './Scenes/PlayerScene'
 import OptionsScene from './Scenes/OptionsScene';
 import CreditsScene from './Scenes/CreditsScene';
 import GameOver from './Scenes/GameOver';
+
 // import Leaderboard from './Scenes/Leaderboard';
 
 export default class Game extends Phaser.Game {

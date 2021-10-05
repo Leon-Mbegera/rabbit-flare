@@ -8,4 +8,5 @@ Thumbs.db
 
 # Vendors
 node_modules/
+coverage
 

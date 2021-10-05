@@ -3,6 +3,23 @@
   "version": "1.0.0",
   "description": "rabbit flare is a platform game similar to endless runner but where a rabbit continuously jumps onto oncoming platforms to go farther and earn more scores.",
   "main": "index.js",
+  "jest": {
+    "automock": false,
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/mocks/styleMock.js",
+      "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/mocks/fileMock.js"
+    }
+  },
   "scripts": {
     "test": "jest",
     "dev": "webpack --mode development",
@@ -22,13 +39,17 @@
   "homepage": "https://github.com/Leon-Mbegera/rabbit-flare#readme",
   "devDependencies": {
     "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
+    "babel-jest": "^27.2.4",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.4",
+    "jest-canvas-mock": "^2.3.1",
     "raw-loader": "^4.0.2",
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^5.53.0",
@@ -40,6 +61,7 @@
     "axios": "^0.21.4",
     "babel-jest": "^27.2.4",
     "css-loader": "^6.3.0",
+    "jsdom": "^17.0.0",
     "phaser": "^3.55.2",
     "regenerator-runtime": "^0.13.9",
     "ts-jest": "^27.0.5"
