@@ -1,7 +1,6 @@
-import Model from '../src/Model'
+import Model from '../src/Model';
 
 describe('Tests sound properties', () => {
-  
   const mockModel = new (Model)();
   test('music starts in a bit after game starts', () => {
     expect(mockModel.bgMusicPlaying).toBeFalsy();
@@ -29,5 +28,4 @@ describe('Tests sound properties', () => {
     mockModel.soundPlaying = true;
     expect(mockModel.soundPlaying).not.toBe(false);
   });
-
-})
+});
