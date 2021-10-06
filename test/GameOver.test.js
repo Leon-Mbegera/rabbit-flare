@@ -30,8 +30,7 @@ const result = fetchScore();
             expect(player.user).toBeTruthy
             expect(player.score).toBeTruthy
           }
-        }
-        
+        } 
       })
     })
 
