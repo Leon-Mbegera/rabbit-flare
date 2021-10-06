@@ -4,6 +4,18 @@ Rabbit flare is an exciting platform game that is based on the concept of an end
 
 ## live demo
 
+
+![]('./src/assets/ui/Screenshot 2021-10-06 130931.png')
+
+## Play instructions
+1. Once the game has loaded, a title scene appears with various buttons. Hit the play button.
+2. Give your preferred player name on the form that appears and hit on the button start game. This will   commence the game. Get ready!
+3. Make use of the up key to perform an extra jump when it the air, left and right keys to move the rabbit left or right so that it land on a platform.
+4. Control the rabbit to collide with carrots so that you can earn points on your score.
+5. If your steer the rabbit far off the game scene, or below the bottom-most platform, the game will be over.
+6. The game over scene will be displayed, and in about 2 secs, the leaderboard will come up.
+7. Hit on Restart button if you want to replay.
+
 ## Built with
 - JavaScript
 - Phaser
