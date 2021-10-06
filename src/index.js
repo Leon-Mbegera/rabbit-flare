@@ -1,5 +1,5 @@
 import 'phaser';
-import 'jest-canvas-mock'
+// import 'jest-canvas-mock'
 import Model from './Model';
 import config from './Config/config';
 import GameScene from './Scenes/GameScene';
