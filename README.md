@@ -4,6 +4,8 @@ Rabbit flare is an exciting platform game that is based on the concept of an end
 
 ## live demo
 
+[click to play](https://leon-mbegera.github.io/rabbit-flare/)
+
 
 ![]('./src/assets/ui/Screenshot 2021-10-06 130931.png')
 
