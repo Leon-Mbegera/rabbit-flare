@@ -37,7 +37,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'assets',
-        }
+        },
       },
       {
         test: /\.html$/i,
@@ -49,6 +49,6 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
-    new CompressionPlugin({ test: /\.mp3$/ })
+    new CompressionPlugin({ test: /\.mp3$/, })
   ],
 };
