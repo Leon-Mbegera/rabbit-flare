@@ -17,10 +17,9 @@ describe('Tests the object response', () => {
 });
 
 describe('Tests for truthiness', () => {
-  if(result.length) {
+  if (result.length) {
     it('returns a players properties as truthy', () => expect(result.player.user).toBeTruthy);
-  
-    it('returns a players properties as truthy', () => expect(result.player.score).toBeTruthy);
 
+    it('returns a players properties as truthy', () => expect(result.player.score).toBeTruthy);
   }
 });
