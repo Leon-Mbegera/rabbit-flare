@@ -124,7 +124,7 @@ export default class GameScene extends Phaser.Scene {
     const touchingGround = this.player.body.touching.down;
 
     if (isJustDown && !touchingGround && this.jumpCount < 1) {
-      this.player.setVelocityY(-330);
+      this.player.setVelocityY(-420);
       this.jumpCount += 1;
     }
 

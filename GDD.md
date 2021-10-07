@@ -8,12 +8,27 @@ Additional resources:
      - [Phaser Tutorials](https://phaser.io/tutorials/getting-started-phaser3)
      - [Phaser Documentation](https://photonstorm.github.io/phaser3-docs/)
 
+## Game play
+The game is designed to be played using the keyboard arrowkeys. up : to perform an extra jump when in the air. left key: to move the rabbit leftwards, and right key: move the rabbit rightwards.
+
+## Game Project Structure
+
 Rabbit flare was created through high-level milestones that were span over a working duration of 5 days. i.e.,
-  - Day 1:  Learning about Phaser Library, following the tutorials, setup development environment        and practice game development with this [5 parts tutorial](https://www.emanueleferonato.com/tag/endless-runner/)
-  - Day 2:  Get familiar, withe phaser features, planning the game, designed it and implemented the very basic mechanics first inorder to make it playerble. Here, I also gathered the assets needed for the game
-  - Day 3:  Setup up the project with the following scenes: Boot, Preloader, Title, Player, and Game. Built the main game scene and gave the rabbit ability to move and jump.
+  - Day 1:  Learning about Phaser Library, following the tutorials, setup development environment        and practice game development with this [5 parts tutorial](https://www.emanueleferonato.com/tag/endless-runner/). 
+
+  - Day 2:  Get familiar, with phaser features, planning the game, designed it and implemented the very basic mechanics first inorder to make it playerble. Here, I also gathered the assets needed for the game. Here I made use of Phaser3 JS library to create the canvas/webGl and different scenes.
+
+  - Day 3:  Setup up the project with the following scenes: Boot, Preloader, Title, Player, and Game. Built the main game scene and used Phaser3 to animate and edit different features like size, respawn, velocity, movement, color.
+
   - Day 4: Add logic for the rabbit to perform and double jump in the air as well place onto platforms carrots to collect inorder to earn points/scores.
-  - Day 5: Keep track of each player's score upon game over and post them to the leaderboard. Afterwards, display the leaderboard with the top 10 players listed.
+
+  - Day 5: Added a leaderboard service api to keep track of each player's score upon game over and post them to the leaderboard. Afterwards, display the leaderboard with the top 10 players listed.
+
+  ## Game Elements
+  - Rabbit
+  - Carrots
+  - Grass Platforms
+  - Blue sky background
 
   ## Scores
   To earn a score the rabbit has to jump onto platforms and collide with the carrots.
