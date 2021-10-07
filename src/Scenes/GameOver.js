@@ -20,7 +20,7 @@ export const fetchScore = async () => {
 export const sendScore = async (value) => {
   const endpoint = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WGd2oSGJfDJEiyfEBDhX/scores/';
 
-  const { data } = await axios.post(endpoint, {
+  await axios.post(endpoint, {
     user: config.player,
     score: value,
   });
@@ -40,7 +40,6 @@ export default class GameOver extends Phaser.Scene {
         await sendScore(this.value);
       }
       const results = await fetchScore();
-      console.log(results, 'getLe');
       const sorted = results.sort((a, b) => (a.score > b.score ? -1 : 1));
 
       const x1 = 600;

@@ -2,8 +2,8 @@ import Phaser from 'phaser';
 import Carrot from '../game/Carrot';
 import background from '../assets/bg_layer1.png';
 import platform from '../assets/ground_grass.png';
-import bunny_stand from '../assets/bunny1_stand.png';
-import bunny_jump from '../assets/bunny1_jump.png';
+import bunnyStand from '../assets/bunny1_stand.png';
+import bunnyJump from '../assets/bunny1_jump.png';
 import carrotImg from '../assets/carrot.png';
 import jumpTrack from '../assets/phaseJump1.ogg';
 
@@ -35,8 +35,8 @@ export default class GameScene extends Phaser.Scene {
   preload() {
     this.load.image('bg', background);
     this.load.image('platform', platform);
-    this.load.image('bunny_stand', bunny_stand);
-    this.load.image('bunny_jump', bunny_jump);
+    this.load.image('bunnyStand', bunnyStand);
+    this.load.image('bunnyJump', bunnyJump);
     this.load.image('carrot', carrotImg);
     this.load.audio('jump', jumpTrack);
 
@@ -47,7 +47,7 @@ export default class GameScene extends Phaser.Scene {
     this.add.image(240, 320, 'bg').setScrollFactor(1, 0);
 
     this.platforms = this.physics.add.staticGroup();
-    for (let i = 0; i < 6; ++i) {
+    for (let i = 0; i < 6; i += 1) {
       const x = Phaser.Math.Between(80, 400);
       const y = 200 * i;
       const platform = this.platforms.create(x, y, 'platform');
@@ -57,7 +57,7 @@ export default class GameScene extends Phaser.Scene {
       body.updateFromGameObject();
     }
 
-    this.player = this.physics.add.sprite(240, 320, 'bunny_stand').setScale(0.4);
+    this.player = this.physics.add.sprite(240, 320, 'bunnyStand').setScale(0.4);
     this.physics.add.collider(this.platforms, this.player);
     this.player.body.checkCollision.up = false;
     this.player.body.checkCollision.left = false;
@@ -85,19 +85,19 @@ export default class GameScene extends Phaser.Scene {
       .setOrigin(0.5, 0);
   }
 
-  update(t, dt) {
+  update() {
     this.carrotsCollectedText.setText(`Score: ${this.carrotsCollected}`);
 
     const touchingDown = this.player.body.touching.down;
     if (touchingDown) {
       this.player.setVelocityY(-330);
-      this.player.setTexture('bunny_jump');
+      this.player.setTexture('bunnyJump');
       this.sound.play('jump');
     }
 
     const vy = this.player.body.velocity.y;
-    if (vy > 0 && this.player.texture.key !== 'bunny_stand') {
-      this.player.setTexture('bunny_stand');
+    if (vy > 0 && this.player.texture.key !== 'bunnyStand') {
+      this.player.setTexture('bunnyStand');
     }
 
     this.platforms.children.iterate((child) => {
@@ -171,13 +171,12 @@ export default class GameScene extends Phaser.Scene {
     const platforms = this.platforms.getChildren();
     let bottomPlatform = platforms[0];
 
-    for (let i = 1; i < platforms.length; ++i) {
+    for (let i = 1; i < platforms.length; i += 1) {
       const platform = platforms[i];
 
-      if (platform.y < bottomPlatform.y) {
-        continue;
+      if (platform.y > bottomPlatform.y) {
+        bottomPlatform = platform;
       }
-      bottomPlatform = platform;
     }
     return bottomPlatform;
   }
