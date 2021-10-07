@@ -1,12 +1,11 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -35,7 +34,10 @@ module.exports = {
       },
       {
         test: /\.(ogg|mp3|wav|gif|png|jpe?g|svg|xml|html)$/i,
-        use: 'file-loader',
+        loader: 'file-loader',
+        options: {
+          outputPath: 'assets'
+        }
       },
       {
         test: /\.html$/i,
