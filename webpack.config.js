@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
@@ -37,12 +37,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'assets',
-        },
-      },
-      {
-        test: /\.html$/i,
-        loader: 'html-loader',
-      },
+        }
+      }
     ],
   },
   plugins: [
